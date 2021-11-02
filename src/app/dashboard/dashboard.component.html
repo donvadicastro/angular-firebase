@@ -1,0 +1,8 @@
+<div class="card mt-1" *ngFor="let character of characters | async">
+  <h5 class="card-header">{{character.firstName}} {{character.lastName}}</h5>
+  <div class="card-body">
+<!--    <h5 class="card-title">Description</h5>-->
+    <p class="card-text">{{character.description}}</p>
+    <a class="btn btn-primary" disabled="true">Score: <span class="badge bg-danger">{{character.score}}</span></a>
+  </div>
+</div>

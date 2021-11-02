@@ -1,0 +1,21 @@
+<button class="btn btn-primary" routerLink="../new">Add a new character</button>
+<table class="table">
+  <thead>
+    <tr>
+      <td>Id</td>
+      <td>First Name</td>
+      <td>Last Name</td>
+      <td>Score</td>
+      <td>Actions</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let character of characters | async">
+      <td><a routerLink="../edit/{{character.id}}">{{ character.id }}</a></td>
+      <td>{{ character.firstName }}</td>
+      <td>{{ character.lastName }}</td>
+      <td>{{ character.score }}</td>
+      <td><button class="btn btn-sm" (click)="onDelete(character.id)">delete</button></td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "test-37ceb": {
+      "hosting": {
+        "angular-firebase": [
+          "test-37ceb"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "test-37ceb"
+  }
+}
