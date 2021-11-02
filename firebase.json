@@ -1,7 +1,7 @@
 {
   "hosting": {
     "target": "angular-firebase",
-    "public": "dist/angular-firebase",
+    "public": "dist",
     "ignore": [
       "**/.*"
     ],
