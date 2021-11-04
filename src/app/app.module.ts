@@ -14,6 +14,7 @@ import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 import {ListComponent} from './management/list/list.component';
 import {EditComponent} from './management/edit/edit.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { MeComponent } from './me/me.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     SignUpComponent,
     DashboardComponent,
     ListComponent,
-    EditComponent
+    EditComponent,
+    MeComponent
   ],
   imports: [
     BrowserModule,

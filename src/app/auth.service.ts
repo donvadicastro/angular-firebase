@@ -4,13 +4,14 @@ import {AngularFirestore, AngularFirestoreDocument} from "@angular/fire/compat/f
 import {Router} from "@angular/router";
 import {User} from "./shared/services/user";
 import firebase from "firebase/compat/app";
+import {BehaviorSubject} from "rxjs";
 import GoogleAuthProvider = firebase.auth.GoogleAuthProvider;
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  userData: any; // Save logged in user data
+  authStateChanged$ = new BehaviorSubject<firebase.User | null>(null);
 
   constructor(
     public afs: AngularFirestore,   // Inject Firestore service
@@ -18,14 +19,16 @@ export class AuthService {
     public router: Router,
     public ngZone: NgZone // NgZone service to remove outside scope warning
   ) {
+
     /* Saving user data in localstorage when
     logged in and setting up null when logged out */
-    this.afAuth.authState.subscribe(user => {
+    this.afAuth.authState.subscribe((user: firebase.User | null) => {
       if (user) {
-        this.userData = user;
-        sessionStorage.setItem('user', JSON.stringify(this.userData));
+        sessionStorage.setItem('user', JSON.stringify(user));
+        this.authStateChanged$.next(user);
       } else {
         sessionStorage.removeItem('user');
+        this.authStateChanged$.next(null);
       }
     })
   }

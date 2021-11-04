@@ -6,6 +6,7 @@ import {DashboardComponent} from "./dashboard/dashboard.component";
 import {AuthGuard} from "./auth.guard";
 import {ListComponent} from "./management/list/list.component";
 import {EditComponent} from "./management/edit/edit.component";
+import {MeComponent} from "./me/me.component";
 
 @NgModule({
   imports: [RouterModule.forRoot([
@@ -13,6 +14,7 @@ import {EditComponent} from "./management/edit/edit.component";
     { path: 'sign-in', component: SignInComponent },
     { path: 'sign-up', component: SignUpComponent },
     { path: 'dashboard', component: DashboardComponent },
+    { path: 'profile', component: MeComponent, canActivate: [AuthGuard] },
     { path: 'management/list', component: ListComponent, canActivate: [AuthGuard] },
     { path: 'management/edit/:id', component: EditComponent, canActivate: [AuthGuard] },
     { path: 'management/new', component: EditComponent, canActivate: [AuthGuard] },
